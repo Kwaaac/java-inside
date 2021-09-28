@@ -1,7 +1,7 @@
 name: Maven Action
 on: [push]
 jobs:
-  Execute-Maven-Command:
+  setup-java-jdk-Maven:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -9,6 +9,7 @@ jobs:
         with:
           distribution: 'zulu' # See 'Supported distributions' for available options
           java-version: '17'
-        # Verifier à modifier
-      - run: java -cp java What
+      - name: Build Maven
+        run: mvn clean package
+
 
